@@ -29,17 +29,17 @@ resource "ibm_dns_custom_resolver" "test" {
 }
 
 resource "ibm_dns_zone" "pdns-1-zone" {
- name = "moises-zone3.com"
- instance_id = ibm_resource_instance.test-pdns-cr-instance.guid
- description = "testdescription"
- label = "testlabel"
+  name        = "moises-zone3.com"
+  instance_id = ibm_resource_instance.test-pdns-cr-instance.guid
+  description = "testdescription"
+  label       = "testlabel"
 }
 
 resource "ibm_dns_secondary_zone" "test" {
-  instance_id = ibm_resource_instance.test-pdns-cr-instance.guid
-  resolver_id = ibm_dns_custom_resolver.test.custom_resolver_id
-  description = "first test"
-  zone = "moises-zone3.com"
-  enabled = true
+  instance_id   = ibm_resource_instance.test-pdns-cr-instance.guid
+  resolver_id   = ibm_dns_custom_resolver.test.custom_resolver_id
+  description   = "first test"
+  zone          = "moises-zone3.com"
+  enabled       = true
   transfer_from = ["10.0.0.8"]
 }
