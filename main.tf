@@ -1,4 +1,5 @@
-variable "subnet_crn" {}
+variable "subnet_crn_1" {}
+variable "subnet_crn_2" {}
 
 data "ibm_resource_group" "rg" {
   is_default = true
@@ -18,11 +19,11 @@ resource "ibm_dns_custom_resolver" "test" {
   description = "new test CR - TF"
   enabled     = true
   locations {
-    subnet_crn = var.subnet_crn
+    subnet_crn = var.subnet_crn_1
     enabled    = true
   }
   locations {
-    subnet_crn = var.subnet_crn
+    subnet_crn = var.subnet_crn_2
     enabled    = true
   }
 }
